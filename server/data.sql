@@ -14,3 +14,4 @@ CREATE TABLE users (
 );
 
 INSERT INTO todos(id, user_email, title, progress, date) VALUES('0', 'alexander@test.com', 'First todo test', 10, 'Wed Mar 13 2024 11:51:13 GMT+0100 (Central European Standard Time)');
+

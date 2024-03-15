@@ -4,6 +4,8 @@ const {v4: uuidv4} = require('uuid') // creates unique ids for the todos
 const cors = require('cors')
 const app = express()
 const pool = require('./db')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 app.use(cors())
 app.use(express.json())
@@ -57,6 +59,39 @@ app.delete('/todos/:id', async (req, res) => {
     res.json(deleteTodo)
   } catch (err) {
     console.error(err.message);
+  }
+})
+
+// Signup
+
+app.post('/signup', async (req, res) => {
+  const { email, password } = req.body
+  const salt = bcrypt.genSaltSync(10)
+  const hashedPassword = bcrypt.hashSync(password, salt)
+
+  try {
+    const signup = await pool.query(`INSERT INTO users (email, hashed_password) VALUES($1, $2)`, [email, hashedPassword])
+    const token = jwt.sign({email}, 'secret', {expiresIn: '1hr'})
+    res.json({email, token})
+
+  } catch (err) {
+    console.error(err)
+    if(err){
+      res.json({detail: err.detail})
+    }
+  }
+})
+
+
+// Login
+
+app.post('/login', async (req, res) => {
+  const { email, pasword } = req.body
+
+  try {
+    
+  } catch (err) {
+    console.error(err.message)
   }
 })
 
