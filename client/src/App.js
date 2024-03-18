@@ -27,7 +27,7 @@ function App() {
     }
   }, [])
 
-  //Sort by date
+  //Sort by date here
   const sortedTasks = tasks?.sort((a,b) => new Date(a.date) - new Date(b.date))
 
   console.log(sortedTasks, 'sort')
