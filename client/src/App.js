@@ -35,12 +35,28 @@ function App() {
     <div className='app'>
       {!authToken && <Auth />}
       {authToken && 
-      <>
-      <ListHeader listName={"holiday tick list"} getData={getData}/>
+      <div className='app-container'>
+        <div className='sidebar'>
+          <span className='logo'>
+            LOGO
+          </span>
+          <button>DARK</button>
+        </div>
+        <div className='app-main'>
+      <ListHeader listName={"Welcome back!"} getData={getData}/>
+      <div className='todo-container'>
+        <div className='todo-title'>
+          <span>My tasks</span>
+        </div>
+        <div className='todos-wrapper'>
+
       {sortedTasks?.map(task => {
-      return <ListItem key={task.id} task={task} getData={getData}/>
+        return <ListItem key={task.id} task={task} getData={getData}/>
       })}
-      </>
+      </div>
+      </div>
+      </div>
+      </div>
       }
     </div>
   );

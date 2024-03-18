@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import Modal from './Modal'
+import {useCookies} from 'react-cookie'
 
 export default function ListHeader({listName, getData}) {
   const [showModal, setShowModal] = useState(false)
+  const [cookies, setCookie, removeCookie] = useCookies(null)
 
   function signOut(){
     console.log('sign out')
+    removeCookie('Email')
+    removeCookie('AuthToken')
+    window.location.reload()
   }
 
   return (

@@ -26,10 +26,10 @@ export default function ListItem({task, getData}) {
       <div className='info-container'>
       <TickIcon />
       <p className='task-title'>{task.title}</p>
-      <ProgressBar />
       </div>
 
       <div className="button-container">
+      <ProgressBar progress={task.progress} />
         <button className="edit" onClick={()=>setShowModal(true)}>EDIT</button>
         <button className="delete" onClick={deleteItem}>DELETE</button>
       </div>
