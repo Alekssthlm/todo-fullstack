@@ -2,12 +2,25 @@ const PORT = process.env.PORT ?? 8000
 const express = require('express')
 const {v4: uuidv4} = require('uuid') // creates unique ids for the todos
 const cors = require('cors')
+
+const allowedOrigins = ['https://todo-fullstack-lac.vercel.app', 'http://localhost:8000/'];   // Allowed urls by CORS
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+
 const app = express()
 const pool = require('./db')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 
 // Get all todos
