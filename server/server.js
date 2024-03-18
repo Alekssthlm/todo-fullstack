@@ -23,7 +23,7 @@ app.get('/todos/:userEmail', async (req, res) =>{
   }
 })
 
-// Create new todos
+// Create new todos here
 
 app.post('/todos', async (req, res) => {
   try {
