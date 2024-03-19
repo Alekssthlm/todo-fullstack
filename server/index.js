@@ -14,7 +14,6 @@ const corsOptions = {
   }
 };
 
-
 const app = express()
 const pool = require('./db')
 const bcrypt = require('bcrypt')
