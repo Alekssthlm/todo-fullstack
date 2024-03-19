@@ -3,7 +3,7 @@ const express = require('express')
 const {v4: uuidv4} = require('uuid') // creates unique ids for the todos
 const cors = require('cors')
 
-const allowedOrigins = ['https://todo-fullstack-lac.vercel.app', 'http://localhost:8000/'];   // Allowed urls by CORS
+const allowedOrigins = ['https://todo-fullstack-lac.vercel.app', 'http://localhost:8000/'];   // Allowed urls by CORS here
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
